@@ -55,19 +55,23 @@ self.addEventListener('fetch', (event) => {
   const { request } = event;
   const url = new URL(request.url);
 
-  // Handle API requests
+  // Handle API requests - only cache GET requests
   if (url.pathname.startsWith('/api/')) {
     event.respondWith(
       caches.open(API_CACHE).then((cache) => {
         return fetch(request).then((response) => {
-          // Cache successful responses
-          if (response.status === 200) {
+          // Only cache GET requests with successful responses
+          if (request.method === 'GET' && response.status === 200) {
             cache.put(request, response.clone());
           }
           return response;
         }).catch(() => {
-          // Return cached version if network fails
-          return cache.match(request);
+          // Return cached version if network fails (only for GET requests)
+          if (request.method === 'GET') {
+            return cache.match(request);
+          }
+          // For non-GET requests, just return a network error
+          return new Response('Network error', { status: 503 });
         });
       })
     );
