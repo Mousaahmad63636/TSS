@@ -8,7 +8,7 @@ export default function AuthGuard({ children }) {
 
   useEffect(() => {
     if (!loading && !user) {
-      router.push('/admin/firebase-login');
+      router.push('/admin/login');
     }
   }, [loading, user, router]);
 

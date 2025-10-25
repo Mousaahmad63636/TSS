@@ -13,7 +13,7 @@ export default function AdminLayout({ children, title }) {
   const handleSignOut = async () => {
     const result = await signOut();
     if (result.success) {
-      router.push('/admin/firebase-login');
+      router.push('/admin/login');
     }
   };
 

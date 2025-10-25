@@ -7,8 +7,6 @@ const API_CACHE = 'api-v1';
 const STATIC_FILES = [
   '/',
   '/manifest.json',
-  '/_next/static/css/',
-  '/_next/static/js/',
 ];
 
 // API endpoints to cache
@@ -21,7 +19,16 @@ const API_ENDPOINTS = [
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(STATIC_CACHE).then((cache) => {
-      return cache.addAll(STATIC_FILES);
+      return Promise.allSettled(
+        STATIC_FILES.map(url => 
+          cache.add(url).catch(err => {
+            console.warn(`Failed to cache ${url}:`, err);
+            return null;
+          })
+        )
+      );
+    }).catch(err => {
+      console.error('Cache installation failed:', err);
     })
   );
   self.skipWaiting();
