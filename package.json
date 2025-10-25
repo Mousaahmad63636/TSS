@@ -1,0 +1,33 @@
+{
+  "name": "online-menu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "migrate-categories": "node scripts/migrate-categories.js",
+    "test-categories": "node scripts/test-categories.js",
+    "test-firebase": "node test-firebase.js",
+    "test-dynamic-integration": "node scripts/test-dynamic-integration.js",
+    "clear-categories": "node scripts/clear-categories.js"
+  },
+  "dependencies": {
+    "firebase": "^10.7.1",
+    "firebase-admin": "^12.0.0",
+    "formidable": "^3.5.4",
+    "lucide-react": "^0.525.0",
+    "next": "14.0.0",
+    "next-auth": "^4.24.5",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "10.4.16",
+    "eslint": "8.51.0",
+    "eslint-config-next": "14.0.0",
+    "postcss": "8.4.31",
+    "tailwindcss": "3.3.5"
+  }
+}
