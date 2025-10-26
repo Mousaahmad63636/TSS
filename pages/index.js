@@ -40,7 +40,7 @@ export default function Menu() {
         const [menuResponse, heroResponse] = await Promise.allSettled([
           fetch('/api/menu', {
             headers: {
-              'Cache-Control': 'max-age=300' // 5 minutes cache
+              'Cache-Control': 'max-age=30' // 30 seconds cache for faster updates
             }
           }),
           fetch('/api/hero-image', {

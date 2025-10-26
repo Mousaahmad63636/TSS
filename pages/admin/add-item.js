@@ -30,6 +30,19 @@ export default function AddMenuItem() {
       
       setSuccess(true);
       
+      // Invalidate cache by making a fresh request to the menu API
+      try {
+        await fetch('/api/menu', {
+          headers: {
+            'Cache-Control': 'no-cache, no-store, must-revalidate',
+            'Pragma': 'no-cache',
+            'Expires': '0'
+          }
+        });
+      } catch (cacheError) {
+        console.warn('Cache invalidation failed:', cacheError);
+      }
+      
       // Brief success display before redirect
       setTimeout(() => {
         router.push('/admin/menu-items');
