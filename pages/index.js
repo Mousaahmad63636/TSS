@@ -3,6 +3,7 @@ import Head from 'next/head';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 import LoadingSkeleton from '../components/LoadingSkeleton';
+import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
 // Dynamic imports for better code splitting
 const MenuHeader = dynamic(() => import('../components/MenuHeader'), {
@@ -134,6 +135,7 @@ export default function Menu() {
             Try Again
           </button>
         </div>
+        <FloatingWhatsApp phoneNumber="00961 3873187" />
       </div>
     );
   }
@@ -144,6 +146,7 @@ export default function Menu() {
         <div className="text-center">
           <p className="text-menu-gray-600">No menu data available</p>
         </div>
+        <FloatingWhatsApp phoneNumber="00961 3873187" />
       </div>
     );
   }
@@ -183,6 +186,8 @@ export default function Menu() {
               </div>
             </div>
           </div>
+          
+          <FloatingWhatsApp phoneNumber="00961 3873187" />
         </div>
       </>
     );
@@ -270,6 +275,8 @@ export default function Menu() {
             </div>
           )}
         </main>
+        
+        <FloatingWhatsApp phoneNumber="00961 3873187" />
         
         <footer className="bg-white border-t border-menu-gray-200 p-4">
           <div className="text-center text-menu-gray-600">

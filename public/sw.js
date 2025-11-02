@@ -1,7 +1,7 @@
 // Service Worker for caching and offline functionality
-const CACHE_NAME = 'brew-caffe-v3';
-const STATIC_CACHE = 'static-v3';
-const API_CACHE = 'api-v3';
+const CACHE_NAME = 'brew-caffe-v4';
+const STATIC_CACHE = 'static-v4';
+const API_CACHE = 'api-v4';
 
 // Files to cache immediately
 const STATIC_FILES = [
