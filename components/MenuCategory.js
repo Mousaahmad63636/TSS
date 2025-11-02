@@ -7,8 +7,10 @@ const MenuCategory = ({ category, isVisible }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleItemClick = (item) => {
+    console.log('Item clicked:', item.name);
     setSelectedItem(item);
     setIsDialogOpen(true);
+    console.log('Dialog state set to true');
   };
 
   const handleCloseDialog = () => {

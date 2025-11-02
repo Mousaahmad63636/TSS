@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 
 const ItemDialog = ({ item, isOpen, onClose }) => {
+  console.log('ItemDialog render - isOpen:', isOpen, 'item:', item?.name);
   if (!isOpen || !item) return null;
 
   const getDietaryBadgeColor = (dietary) => {
