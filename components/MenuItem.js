@@ -2,7 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 
 const MenuItem = React.memo(({ item, onClick }) => {
-  console.log('MenuItem rendered:', item.name, 'onClick:', typeof onClick);
   const getDietaryBadgeColor = (dietary) => {
     const colors = {
       vegetarian: 'bg-green-100 text-green-800',
@@ -33,10 +32,7 @@ const MenuItem = React.memo(({ item, onClick }) => {
   return (
     <div 
       className="bg-white border-b border-menu-gray-200 p-4 relative cursor-pointer hover:bg-gray-50 active:bg-gray-100 transition-colors"
-      onClick={(e) => {
-        console.log('Div clicked!', item.name);
-        if (onClick) onClick();
-      }}
+      onClick={onClick}
     >
       <div className="flex items-start space-x-3">
         <div className="relative flex-shrink-0">

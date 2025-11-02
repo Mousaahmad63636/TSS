@@ -1,7 +1,7 @@
 // Service Worker for caching and offline functionality
-const CACHE_NAME = 'brew-caffe-v2';
-const STATIC_CACHE = 'static-v2';
-const API_CACHE = 'api-v2';
+const CACHE_NAME = 'brew-caffe-v3';
+const STATIC_CACHE = 'static-v3';
+const API_CACHE = 'api-v3';
 
 // Files to cache immediately
 const STATIC_FILES = [
@@ -32,6 +32,13 @@ self.addEventListener('install', (event) => {
     })
   );
   self.skipWaiting();
+});
+
+// Message event - handle skip waiting
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // Activate event - clean up old caches
