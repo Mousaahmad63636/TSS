@@ -1,7 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MenuItem from './MenuItem';
+import ItemDialog from './ItemDialog';
 
 const MenuCategory = ({ category, isVisible }) => {
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleItemClick = (item) => {
+    setSelectedItem(item);
+    setIsDialogOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+    setTimeout(() => setSelectedItem(null), 300);
+  };
+
   if (!isVisible) return null;
 
   return (
@@ -13,10 +27,17 @@ const MenuCategory = ({ category, isVisible }) => {
               key={item.id} 
               item={item} 
               isLast={index === category.items.length - 1}
+              onClick={() => handleItemClick(item)}
             />
           ))}
         </div>
       </div>
+
+      <ItemDialog 
+        item={selectedItem}
+        isOpen={isDialogOpen}
+        onClose={handleCloseDialog}
+      />
     </section>
   );
 };
